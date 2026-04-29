@@ -1,6 +1,8 @@
+# Ignora as pastas
 node_modules/
-testes/
 
+# Ignora o arquivo senhas.txt
 senhas.txt
 
+# Ignorar arquivos de texto
 *.txt
