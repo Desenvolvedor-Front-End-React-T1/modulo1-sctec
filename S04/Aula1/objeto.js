@@ -33,3 +33,14 @@ console.log(pessoa)
 // console.log(
 //     Object.values(pessoa)
 // )
+
+
+// // Fazer um exemplo com array
+// objeto = {
+//     cargo: "",
+//     status: ""
+// }
+
+// const propriedadesRemover = ["cargo", "status"]
+
+// propriedadesRemover.forEach(prop => delete objeto[prop])
