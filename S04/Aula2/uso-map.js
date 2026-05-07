@@ -1,7 +1,7 @@
 // Objetivo do MAP -> transformar dados e sempre vai criar um novo array
 
 const precos = [100, 90, 250, 50]
-
+// precos.map((preco) => preco * 0.9)
 const comDesconto = precos.map((preco) => {
     // return preco * 0.9
     if (preco > 100) return preco * 0.9
@@ -23,7 +23,7 @@ const nomes = usuarios.map((usuario) => {
     return usuario.nome
 })
 
-console.log(nomes)
+console.log(nomes) // ["Yan", "Ana", "Joao"]
 
 // Exemplo 3 de map
 
