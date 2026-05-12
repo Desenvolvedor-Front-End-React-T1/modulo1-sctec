@@ -1,28 +1,35 @@
-class Personagem {
-    constructor(nome, caracteristicaPrincipal) {
+class Personagem {  
+    nome = ""
+    caracteristicaPrincipal = "" 
+
+    constructor(nome, caracteristicaPrincipal = "força") {
+        this.nome = nome
+        this.caracteristicaPrincipal = caracteristicaPrincipal
     }
 
     correr() {
-        console.log(" está correndo")
+        console.log(this.nome + " está correndo")
     }
 
     bater() {
-        console.log("está batendo em algo")
+        console.log(this.nome + " está batendo em algo")
     }
 
     nadar() {
-        console.log("está nadando")
+        console.log(this.nome + " está nadando")
     }
 
     voar() {
-        console.log("está voando")
+        console.log(this.nome +  " está voando")
     }
 }
 
 const personagem1 = new Personagem("Guerreiro Alfa", "força")
-// const personagem2 = new Personagem("Guerreiro Beta", "velocidade")
+const personagem2 = new Personagem("Guerreiro Beta")
 
-personagem1.bater()
+
+
+
 
 
 // const personagem = {

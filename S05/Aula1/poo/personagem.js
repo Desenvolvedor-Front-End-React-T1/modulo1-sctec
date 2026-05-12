@@ -1,20 +1,26 @@
 class Personagem {
+    nome = ""
+    caracteristicaPrincipal = ""
     constructor(nome, caracteristicaPrincipal) {
+        this.nome = nome
+        this.caracteristicaPrincipal = caracteristicaPrincipal
     }
 
     correr() {
-        console.log(" está correndo")
+        console.log(this.nome + " está correndo")
     }
 
     bater() {
-        console.log("está batendo em algo")
+        console.log(this.nome + " está batendo em algo")
     }
 
     nadar() {
-        console.log("está nadando")
+        console.log(this.nome + " está nadando")
     }
 
     voar() {
-        console.log("está voando")
+        console.log(this.nome + " está voando")
     }
 }
+
+module.exports = Personagem
