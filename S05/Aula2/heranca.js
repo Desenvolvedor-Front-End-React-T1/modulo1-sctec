@@ -10,6 +10,10 @@ class Animal {
 }
 
 class Cachorro extends Animal {       
+    raca = ''
+    constructor(nome, raca) {
+        this.raca = raca
+    }
     latir() {
         console.log(`O ${this.nomeAnimal} está latindo`)
     }
