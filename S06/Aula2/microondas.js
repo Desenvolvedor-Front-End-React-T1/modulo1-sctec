@@ -3,13 +3,16 @@ function esquentarComida(timerMS) {
 
     return new Promise((resolve) => {
         setTimeout(() => {
-            resolve('Comida pronta!')
+            resolve({ status: 'Comida esquentada', tempo: timerMS })
         }, timerMS)
     })
 
 }
 
-console.log('Colocando comida no microondas')
+async function preparar() {
+    console.log('Colocando comida no microondas')
+    const resultado = await esquentarComida(10000) // Ponto de interrupcao ou "espera"
+    console.log(resultado)
+}
 
-esquentarComida(5000)
-    .then(resultado => console.log(resultado))
+preparar()
