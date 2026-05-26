@@ -1,0 +1,38 @@
+/*
+O que a gente quer estilizar {
+    estilizacoes...
+    propriedades: valor;
+}
+*/
+
+* {
+    font-family: 'Roboto', sans-serif; 
+}
+
+h1 {
+    font-size: 32px;
+}
+
+/* Estilizando via classe */
+.imagem-receita {
+    border-radius: 14px;
+}
+
+.imagem-receita li {
+    font-weight: 700;
+}
+
+/* Estilizacao via ID */
+#ingredientes {
+}
+
+header {
+    background-color: #FFC800;
+    height: 64px;
+}
+
+.logo {
+    display: block;
+    height: 64px;
+    width: 240px;
+}
