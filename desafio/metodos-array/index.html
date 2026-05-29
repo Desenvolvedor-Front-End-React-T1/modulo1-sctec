@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Glossário de Métodos de Array — JavaScript</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="hero">
+    <h1>Glossário de Métodos de Array</h1>
+    <p>JavaScript — sintaxe, casos de uso e exemplos práticos interativos.</p>
+  </header>
+
+  <nav class="sumario">
+    <h2>Sumário</h2>
+    <ol>
+      <li><a href="#find">find()</a></li>
+      <li><a href="#filter">filter()</a></li>
+      <li><a href="#map">map()</a></li>
+      <li><a href="#reduce">reduce()</a></li>
+      <li><a href="#forEach">forEach()</a></li>
+      <li><a href="#some">some()</a></li>
+      <li><a href="#every">every()</a></li>
+      <li><a href="#includes">includes()</a></li>
+      <li><a href="#findIndex">findIndex()</a></li>
+      <li><a href="#sort">sort()</a></li>
+    </ol>
+  </nav>
+
+  <main>
+
+    <!-- 1 - FIND -->
+    <section id="find" class="metodo">
+      <h2><span class="num">1</span> find()</h2>
+      <p class="resumo">Retorna o <strong>primeiro elemento</strong> que satisfaz a condição. Se nenhum atender, retorna <code>undefined</code>.</p>
+
+      <h3>Sintaxe</h3>
+      <pre><code>const resultado = array.find((elemento, indice, array) =&gt; {
+  return condicao; // true = encontrou
+});</code></pre>
+
+      <h3>Casos de uso</h3>
+      <ul>
+        <li>Buscar um usuário pelo <code>id</code>.</li>
+        <li>Encontrar o primeiro item em estoque.</li>
+        <li>Localizar um produto específico em um carrinho.</li>
+      </ul>
+
+      <h3>Exemplo prático</h3>
+      <div class="exemplo" data-metodo="find">
+        <p class="frutas-lista"></p>
+        <label>Buscar a primeira fruta que começa com a letra:</label>
+        <div class="controles">
+          <input type="text" maxlength="1" placeholder="ex: m">
+          <button>Testar</button>
+        </div>
+        <output></output>
+      </div>
+    </section>
+
+    <!-- 2 - FILTER -->
+    <section id="filter" class="metodo">
+      <h2><span class="num">2</span> filter()</h2>
+      <p class="resumo">Retorna um <strong>novo array</strong> com <strong>todos os elementos</strong> que satisfazem a condição.</p>
+
+      <h3>Sintaxe</h3>
+      <pre><code>const novoArray = array.filter((elemento, indice, array) =&gt; {
+  return condicao; // true = mantém no resultado
+});</code></pre>
+
+      <h3>Casos de uso</h3>
+      <ul>
+        <li>Filtrar produtos por faixa de preço.</li>
+        <li>Exibir apenas tarefas concluídas.</li>
+        <li>Remover valores inválidos de uma lista.</li>
+      </ul>
+
+      <h3>Exemplo prático</h3>
+      <div class="exemplo" data-metodo="filter">
+        <p class="frutas-lista"></p>
+        <label>Filtrar frutas que contenham o texto:</label>
+        <div class="controles">
+          <input type="text" placeholder="ex: a">
+          <button>Testar</button>
+        </div>
+        <output></output>
+      </div>
+    </section>
+
+    <!-- 3 - MAP -->
+    <section id="map" class="metodo">
+      <h2><span class="num">3</span> map()</h2>
+      <p class="resumo">Cria um <strong>novo array</strong> aplicando uma transformação a <strong>cada elemento</strong>.</p>
+
+      <h3>Sintaxe</h3>
+      <pre><code>const novoArray = array.map((elemento, indice, array) =&gt; {
+  return novoValor;
+});</code></pre>
+
+      <h3>Casos de uso</h3>
+      <ul>
+        <li>Converter preços (aplicar desconto, mudar moeda).</li>
+        <li>Extrair uma propriedade de cada objeto (ex: só os nomes).</li>
+        <li>Formatar dados para exibição.</li>
+      </ul>
+
+      <h3>Exemplo prático</h3>
+      <div class="exemplo" data-metodo="map">
+        <p class="frutas-lista"></p>
+        <label>Transformar cada fruta adicionando um sufixo:</label>
+        <div class="controles">
+          <input type="text" placeholder="ex: 🍴">
+          <button>Testar</button>
+        </div>
+        <output></output>
+      </div>
+    </section>
+
+    <!-- 4 - REDUCE -->
+    <section id="reduce" class="metodo">
+      <h2><span class="num">4</span> reduce()</h2>
+      <p class="resumo">Reduz o array a <strong>um único valor</strong>, acumulando resultado a cada iteração.</p>
+
+      <h3>Sintaxe</h3>
+      <pre><code>const total = array.reduce((acumulador, elemento, indice, array) =&gt; {
+  return novoAcumulador;
+}, valorInicial);</code></pre>
+
+      <h3>Casos de uso</h3>
+      <ul>
+        <li>Somar valores (total de um carrinho).</li>
+        <li>Contar ocorrências de itens.</li>
+        <li>Agrupar/transformar uma lista em um objeto.</li>
+      </ul>
+
+      <h3>Exemplo prático</h3>
+      <div class="exemplo" data-metodo="reduce">
+        <p class="frutas-lista"></p>
+        <label>Calcular o total de letras de todas as frutas (clique em testar):</label>
+        <div class="controles">
+          <button>Testar</button>
+        </div>
+        <output></output>
+      </div>
+    </section>
+
+    <!-- 5 - FOREACH -->
+    <section id="forEach" class="metodo">
+      <h2><span class="num">5</span> forEach()</h2>
+      <p class="resumo">Executa uma função para <strong>cada elemento</strong>. Não retorna nada (<code>undefined</code>) — usado por efeito colateral.</p>
+
+      <h3>Sintaxe</h3>
+      <pre><code>array.forEach((elemento, indice, array) =&gt; {
+  // executa algo para cada item
+});</code></pre>
+
+      <h3>Casos de uso</h3>
+      <ul>
+        <li>Imprimir cada item no console.</li>
+        <li>Renderizar elementos na tela.</li>
+        <li>Disparar uma ação por item (salvar, logar).</li>
+      </ul>
+
+      <h3>Exemplo prático</h3>
+      <div class="exemplo" data-metodo="forEach">
+        <p class="frutas-lista"></p>
+        <label>Listar cada fruta numerada (clique em testar):</label>
+        <div class="controles">
+          <button>Testar</button>
+        </div>
+        <output></output>
+      </div>
+    </section>
+
+    <!-- 6 - SOME -->
+    <section id="some" class="metodo">
+      <h2><span class="num">6</span> some()</h2>
+      <p class="resumo">Retorna <code>true</code> se <strong>pelo menos um</strong> elemento satisfizer a condição.</p>
+
+      <h3>Sintaxe</h3>
+      <pre><code>const existe = array.some((elemento, indice, array) =&gt; {
+  return condicao;
+});</code></pre>
+
+      <h3>Casos de uso</h3>
+      <ul>
+        <li>Verificar se existe algum item fora de estoque.</li>
+        <li>Validar se há pelo menos um campo preenchido.</li>
+        <li>Checar permissões (algum usuário é admin?).</li>
+      </ul>
+
+      <h3>Exemplo prático</h3>
+      <div class="exemplo" data-metodo="some">
+        <p class="frutas-lista"></p>
+        <label>Existe alguma fruta que contém o texto?</label>
+        <div class="controles">
+          <input type="text" placeholder="ex: uva">
+          <button>Testar</button>
+        </div>
+        <output></output>
+      </div>
+    </section>
+
+    <!-- 7 - EVERY -->
+    <section id="every" class="metodo">
+      <h2><span class="num">7</span> every()</h2>
+      <p class="resumo">Retorna <code>true</code> somente se <strong>todos</strong> os elementos satisfizerem a condição.</p>
+
+      <h3>Sintaxe</h3>
+      <pre><code>const todos = array.every((elemento, indice, array) =&gt; {
+  return condicao;
+});</code></pre>
+
+      <h3>Casos de uso</h3>
+      <ul>
+        <li>Validar um formulário (todos os campos válidos?).</li>
+        <li>Checar se todos os itens foram pagos.</li>
+        <li>Garantir que todos os números são positivos.</li>
+      </ul>
+
+      <h3>Exemplo prático</h3>
+      <div class="exemplo" data-metodo="every">
+        <p class="frutas-lista"></p>
+        <label>Todas as frutas têm mais letras que:</label>
+        <div class="controles">
+          <input type="number" placeholder="ex: 3">
+          <button>Testar</button>
+        </div>
+        <output></output>
+      </div>
+    </section>
+
+    <!-- 8 - INCLUDES -->
+    <section id="includes" class="metodo">
+      <h2><span class="num">8</span> includes()</h2>
+      <p class="resumo">Retorna <code>true</code> se o array <strong>contém</strong> o valor informado (comparação exata).</p>
+
+      <h3>Sintaxe</h3>
+      <pre><code>const temItem = array.includes(valor);</code></pre>
+
+      <h3>Casos de uso</h3>
+      <ul>
+        <li>Verificar se um item já está no carrinho.</li>
+        <li>Checar se uma tag está em uma lista.</li>
+        <li>Validar se um valor é permitido (lista branca).</li>
+      </ul>
+
+      <h3>Exemplo prático</h3>
+      <div class="exemplo" data-metodo="includes">
+        <p class="frutas-lista"></p>
+        <label>A lista contém exatamente a fruta:</label>
+        <div class="controles">
+          <input type="text" placeholder="ex: Maçã">
+          <button>Testar</button>
+        </div>
+        <output></output>
+      </div>
+    </section>
+
+    <!-- 9 - FINDINDEX -->
+    <section id="findIndex" class="metodo">
+      <h2><span class="num">9</span> findIndex()</h2>
+      <p class="resumo">Retorna o <strong>índice</strong> do primeiro elemento que satisfaz a condição, ou <code>-1</code> se nenhum atender.</p>
+
+      <h3>Sintaxe</h3>
+      <pre><code>const indice = array.findIndex((elemento, indice, array) =&gt; {
+  return condicao;
+});</code></pre>
+
+      <h3>Casos de uso</h3>
+      <ul>
+        <li>Achar a posição de um item para atualizá-lo.</li>
+        <li>Localizar índice antes de remover com <code>splice()</code>.</li>
+        <li>Saber se e onde um item existe.</li>
+      </ul>
+
+      <h3>Exemplo prático</h3>
+      <div class="exemplo" data-metodo="findIndex">
+        <p class="frutas-lista"></p>
+        <label>Posição da primeira fruta que começa com:</label>
+        <div class="controles">
+          <input type="text" maxlength="1" placeholder="ex: b">
+          <button>Testar</button>
+        </div>
+        <output></output>
+      </div>
+    </section>
+
+    <!-- 10 - SORT -->
+    <section id="sort" class="metodo">
+      <h2><span class="num">10</span> sort()</h2>
+      <p class="resumo">Ordena os elementos do array. <strong>Atenção:</strong> modifica o array original e ordena como texto por padrão.</p>
+
+      <h3>Sintaxe</h3>
+      <pre><code>// Alfabética (padrão)
+array.sort();
+
+// Numérica / personalizada
+array.sort((a, b) =&gt; a - b); // crescente</code></pre>
+
+      <h3>Casos de uso</h3>
+      <ul>
+        <li>Ordenar uma lista de nomes alfabeticamente.</li>
+        <li>Ordenar produtos por preço.</li>
+        <li>Organizar datas da mais recente à mais antiga.</li>
+      </ul>
+
+      <h3>Exemplo prático</h3>
+      <div class="exemplo" data-metodo="sort">
+        <p class="frutas-lista"></p>
+        <label>Ordenar as frutas:</label>
+        <div class="controles">
+          <select>
+            <option value="asc">A → Z (alfabética)</option>
+            <option value="desc">Z → A (inversa)</option>
+            <option value="tamanho">Por tamanho do nome</option>
+          </select>
+          <button>Testar</button>
+        </div>
+        <output></output>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Glossário de Métodos de Array — Documento de estudo · SCTEC</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

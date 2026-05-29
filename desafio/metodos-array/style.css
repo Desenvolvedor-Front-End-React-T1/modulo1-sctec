@@ -1,0 +1,235 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --azul: #2563eb;
+  --azul-escuro: #1e3a8a;
+  --cinza-bg: #f1f5f9;
+  --cinza-borda: #cbd5e1;
+  --texto: #1e293b;
+  --code-bg: #1e293b;
+  --code-texto: #e2e8f0;
+}
+
+body {
+  font-family: "Segoe UI", system-ui, sans-serif;
+  color: var(--texto);
+  background: var(--cinza-bg);
+  line-height: 1.6;
+}
+
+/* CABEÇALHO */
+.hero {
+  background: linear-gradient(135deg, var(--azul), var(--azul-escuro));
+  color: #fff;
+  text-align: center;
+  padding: 48px 20px;
+}
+
+.hero h1 {
+  font-size: 2.2rem;
+  margin-bottom: 8px;
+}
+
+.hero p {
+  opacity: 0.9;
+}
+
+/* SUMÁRIO */
+.sumario {
+  max-width: 900px;
+  margin: 32px auto;
+  background: #fff;
+  border: 1px solid var(--cinza-borda);
+  border-radius: 12px;
+  padding: 24px 32px;
+}
+
+.sumario h2 {
+  color: var(--azul-escuro);
+  margin-bottom: 12px;
+}
+
+.sumario ol {
+  columns: 2;
+  padding-left: 20px;
+}
+
+.sumario a {
+  color: var(--azul);
+  text-decoration: none;
+}
+
+.sumario a:hover {
+  text-decoration: underline;
+}
+
+/* SEÇÕES DE MÉTODOS */
+main {
+  max-width: 900px;
+  margin: 0 auto 60px;
+  padding: 0 16px;
+}
+
+.metodo {
+  background: #fff;
+  border: 1px solid var(--cinza-borda);
+  border-radius: 12px;
+  padding: 28px 32px;
+  margin-bottom: 28px;
+  scroll-margin-top: 20px;
+}
+
+.metodo h2 {
+  color: var(--azul-escuro);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+}
+
+.num {
+  background: var(--azul);
+  color: #fff;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.metodo h3 {
+  margin: 20px 0 8px;
+  color: var(--azul);
+  font-size: 1.05rem;
+}
+
+.resumo {
+  background: #eff6ff;
+  border-left: 4px solid var(--azul);
+  padding: 10px 14px;
+  border-radius: 6px;
+}
+
+.metodo ul {
+  padding-left: 22px;
+}
+
+code {
+  background: #e2e8f0;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: "Consolas", "Courier New", monospace;
+  font-size: 0.9em;
+}
+
+pre {
+  background: var(--code-bg);
+  color: var(--code-texto);
+  padding: 16px 18px;
+  border-radius: 8px;
+  overflow-x: auto;
+}
+
+pre code {
+  background: none;
+  padding: 0;
+  color: inherit;
+}
+
+/* EXEMPLO INTERATIVO */
+.exemplo {
+  background: #f8fafc;
+  border: 1px dashed var(--cinza-borda);
+  border-radius: 10px;
+  padding: 18px;
+  margin-top: 8px;
+}
+
+.frutas-lista {
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.frutas-lista span {
+  display: inline-block;
+  background: #fff;
+  border: 1px solid var(--cinza-borda);
+  border-radius: 20px;
+  padding: 2px 12px;
+  margin: 2px;
+  font-weight: 400;
+}
+
+.exemplo label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.controles {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.controles input,
+.controles select {
+  padding: 8px 12px;
+  border: 1px solid var(--cinza-borda);
+  border-radius: 6px;
+  font-size: 1rem;
+  flex: 1;
+  min-width: 120px;
+}
+
+.controles button {
+  background: var(--azul);
+  color: #fff;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.controles button:hover {
+  background: var(--azul-escuro);
+}
+
+output {
+  display: block;
+  margin-top: 14px;
+  padding: 12px 14px;
+  background: #fff;
+  border: 1px solid var(--cinza-borda);
+  border-radius: 6px;
+  font-family: "Consolas", monospace;
+  font-size: 0.95rem;
+  white-space: pre-wrap;
+  min-height: 20px;
+  color: #334155;
+}
+
+output.vazio {
+  color: #94a3b8;
+  font-style: italic;
+}
+
+/* RODAPÉ */
+footer {
+  background: var(--azul-escuro);
+  color: #cbd5e1;
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9rem;
+}
