@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Box Model — padding, border, margin</title>
+<style>
+  :root {
+    --margin-color: #FAEEDA;
+    --margin-text: #854F0B;
+    --border-color: #888780;
+    --padding-color: #9FE1CB;
+    --padding-text: #0F6E56;
+    --bg: #f5f5f0;
+    --surface: #ffffff;
+    --text: #2c2c2a;
+    --text-muted: #5f5e5a;
+    --line: rgba(0,0,0,0.12);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    margin: 0;
+    padding: 2rem 1rem;
+    line-height: 1.6;
+  }
+
+  .container {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    font-size: 22px;
+    font-weight: 500;
+    margin: 0 0 1.5rem;
+  }
+
+  /* ---- Controles deslizantes ---- */
+  .controls {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+  }
+  .control {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+    min-width: 200px;
+  }
+  .control label {
+    font-size: 13px;
+    min-width: 60px;
+  }
+  .control input[type="range"] { flex: 1; }
+  .control .value {
+    font-size: 13px;
+    font-weight: 500;
+    min-width: 38px;
+    text-align: right;
+  }
+
+  /* ---- Palco onde a caixa aparece ---- */
+  .stage {
+    background: var(--surface);
+    border: 0.5px solid var(--line);
+    border-radius: 12px;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 280px;
+  }
+
+  /* Cada camada do box model é uma div aninhada */
+  .layer { position: relative; transition: padding .15s ease; }
+  .layer > .tag {
+    position: absolute;
+    top: 2px;
+    left: 6px;
+    font-size: 11px;
+  }
+
+  #margin-box  { background: var(--margin-color); border-radius: 4px; }
+  #margin-box  > .tag { color: var(--margin-text); }
+  #border-box  { background: var(--border-color); border-radius: 2px; }
+  #border-box  > .tag { color: #f1efe8; }
+  #padding-box { background: var(--padding-color); }
+  #padding-box > .tag { color: var(--padding-text); }
+
+  .content {
+    background: var(--surface);
+    border: 0.5px solid var(--line);
+    padding: 18px 22px;
+    font-size: 13px;
+    text-align: center;
+    border-radius: 2px;
+  }
+
+  /* ---- Cards de leitura ---- */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+    margin-top: 1.5rem;
+  }
+  .stat {
+    background: var(--surface);
+    border: 0.5px solid var(--line);
+    border-radius: 8px;
+    padding: 1rem;
+  }
+  .stat .label { font-size: 13px; color: var(--text-muted); }
+  .stat .number { font-size: 24px; font-weight: 500; }
+
+  .note {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 12px;
+  }
+  code {
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    background: rgba(0,0,0,0.05);
+    padding: 1px 5px;
+    border-radius: 4px;
+    font-size: 0.9em;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>Box Model — padding, border, margin</h1>
+
+    <!-- Controles -->
+    <div class="controls">
+      <div class="control">
+        <label for="margin" style="color: var(--margin-text);">margin</label>
+        <input type="range" id="margin" min="0" max="40" value="20" step="1">
+        <span class="value" id="margin-out">20px</span>
+      </div>
+      <div class="control">
+        <label for="border" style="color: var(--text-muted);">border</label>
+        <input type="range" id="border" min="0" max="20" value="6" step="1">
+        <span class="value" id="border-out">6px</span>
+      </div>
+      <div class="control">
+        <label for="padding" style="color: var(--padding-text);">padding</label>
+        <input type="range" id="padding" min="0" max="40" value="20" step="1">
+        <span class="value" id="padding-out">20px</span>
+      </div>
+    </div>
+
+    <!-- Visualização: caixas aninhadas representando as camadas -->
+    <div class="stage">
+      <div class="layer" id="margin-box">
+        <span class="tag">margin</span>
+        <div class="layer" id="border-box">
+          <span class="tag">border</span>
+          <div class="layer" id="padding-box">
+            <span class="tag">padding</span>
+            <div class="content">conteúdo</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Leituras -->
+    <div class="stats">
+      <div class="stat">
+        <div class="label">largura ocupada na tela</div>
+        <div class="number" id="total-w">—</div>
+      </div>
+      <div class="stat">
+        <div class="label">box-sizing</div>
+        <div class="number">content-box</div>
+      </div>
+    </div>
+
+    <p class="note">
+      Com <code>box-sizing: content-box</code> (o padrão), a largura final é
+      conteúdo + padding + border + margin. Com <code>box-sizing: border-box</code>,
+      o padding e a border passam a caber dentro da largura definida.
+    </p>
+  </div>
+
+  <script>
+    const margin  = document.getElementById('margin');
+    const border  = document.getElementById('border');
+    const padding = document.getElementById('padding');
+
+    const marginBox  = document.getElementById('margin-box');
+    const borderBox  = document.getElementById('border-box');
+    const paddingBox = document.getElementById('padding-box');
+
+    // largura aproximada do texto "conteúdo" + seu padding interno
+    const contentWidth = 22 * 2 + ('conteúdo'.length * 7);
+
+    function atualizar() {
+      const m = +margin.value;
+      const b = +border.value;
+      const p = +padding.value;
+
+      // Atualiza os números ao lado de cada slider
+      document.getElementById('margin-out').textContent  = m + 'px';
+      document.getElementById('border-out').textContent  = b + 'px';
+      document.getElementById('padding-out').textContent = p + 'px';
+
+      // Cada camada vira "mais grossa" conforme o valor
+      // (somamos um valor base só para a etiqueta caber)
+      marginBox.style.padding  = (m + 14) + 'px ' + (m + 10) + 'px';
+      borderBox.style.padding  = (b + 12) + 'px ' + (b + 10) + 'px';
+      paddingBox.style.padding = (p + 14) + 'px ' + (p + 10) + 'px';
+
+      // Largura total ocupada (content-box): conteúdo + 2×cada camada
+      const total = contentWidth + 2 * p + 2 * b + 2 * m;
+      document.getElementById('total-w').textContent = Math.round(total) + 'px';
+    }
+
+    margin.addEventListener('input', atualizar);
+    border.addEventListener('input', atualizar);
+    padding.addEventListener('input', atualizar);
+
+    atualizar(); // estado inicial
+  </script>
+</body>
+</html>
