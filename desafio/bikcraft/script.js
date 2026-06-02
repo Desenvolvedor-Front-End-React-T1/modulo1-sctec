@@ -14,3 +14,15 @@ const subtituloIntro = document.getElementById('subtitulo-introducao')
 const bikes = document.querySelectorAll('.bike')
 console.log('BICICLETAS ENCONTRADAS: ', bikes.length)
 // console.log(bikes)
+
+
+/**
+ * ADICIONAR EVENTOS
+ * 1 - SELECIONAR O ELEMENTO NO HTML (DOM)
+ * 2 - FALAR QUAL O EVENTO QUE A GENTE QUER CAPTURAR (click, mover mouse, digitacao, scroll)
+ * 3 - O QUE FAZER QUANDO AQUELE EVENTO ACONTECER (callback)
+ */
+
+btnEscolha.addEventListener('click', (event) => {
+    alert('Houve clique no botao')
+})
