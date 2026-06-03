@@ -1,0 +1,32 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 360px;
+    padding: 10px;
+}
+.user-question, .gpt-response {
+    width: 100%;
+    border-radius: 14px;
+    padding: 6px 12px;
+}
+.user-question {
+    background: orange;
+    color: white;
+}
+
+.gpt-response {
+    /* background: lightblue; */
+}
+
+.green {
+    background: green;
+}
+
+.orange {
+    background: orange;
+}
+
+.blue {
+    background: blue;
+}
