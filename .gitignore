@@ -1,5 +1,6 @@
 # Ignora as pastas
 node_modules/
+.DS_Store
 
 # Ignora o arquivo senhas.txt
 senhas.txt
