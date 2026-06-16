@@ -1,0 +1,55 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  max-width: 300px;
+}
+
+.cor-azul {
+  width: 200px;
+  height: 420px;
+  background-color: blue;
+}
+.cor-branca {
+  width: 200px;
+  height: 420px;
+  background-color: white;
+}
+.cor-vermelha {
+  width: 200px;
+  height: 420px;
+  background-color: red;
+}
+
+.texto-holanda {
+  display: none;
+}
+
+@media (max-width: 400px) {
+  /*
+    Leitura max-width: Até este tamanho de largura
+    Leitura min-width: A partir deste tamanho de largura
+  */
+  .container {
+    flex-direction: column;
+  }
+
+  .cor-azul, .cor-branca, .cor-vermelha {
+    width: 300px;
+    height: 75px;
+  }
+  
+  .texto-franca {
+    display: none;
+  }
+
+  .texto-holanda {
+    display: inline;
+  }
+
+}
