@@ -1,0 +1,82 @@
+/* Cardápio responsivo — mobile-first.
+   "Mobile-first" = escrevemos PRIMEIRO o layout do celular (sem media query) e,
+   só depois, usamos @media para o desktop. Aqui as colunas começam empilhadas
+   (celular) e, em telas largas, passam a ficar lado a lado.
+   Dica de leitura: o comentário ao lado de cada propriedade explica O QUE ela
+   faz e QUANDO usá-la. */
+
+/* O seletor "*" pega TODOS os elementos da página de uma vez (é o "reset" inicial). */
+* {
+  margin: 0;
+  /* zera a margem (espaço externo) padrão do navegador */
+  padding: 0;
+  /* zera o padding (espaço interno) padrão — partimos de um ponto previsível */
+  font-family: 'Inter', sans-serif;
+  /* fonte padrão de tudo; se a Inter não carregar, cai na sans-serif do sistema */
+}
+
+/* BODY = a página inteira. */
+body {
+  padding: 24px;
+  /* respiro interno em todos os lados, p/ o conteúdo não colar nas bordas */
+  color: #18181b;
+  /* cor padrão do texto (quase preto); "color" é herdada, então desce p/ os filhos */
+}
+
+/* TÍTULO do cardápio — tamanho FLUIDO com clamp(). */
+.titulo {
+  margin-bottom: 16px;
+  /* afasta 16px do conteúdo abaixo (as colunas) */
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
+  /* tamanho FLUIDO: mínimo 1.5rem, ideal 5% da largura da tela (vw), máximo 2.5rem → acompanha a tela */
+}
+
+/* BASE = celular: as duas colunas empilham */
+/* CARDÁPIO — o container das colunas (Comidas | Bebidas). No celular, empilhadas. */
+.cardapio {
+  display: flex;
+  /* liga o Flexbox: as colunas viram itens flex */
+  flex-direction: column;
+  /* empilha os itens em COLUNA (um embaixo do outro) — este é o padrão do celular */
+  gap: 24px;
+  /* espaço de 24px ENTRE as colunas (substitui margens manuais) */
+}
+
+/* Título de cada coluna (o "h2" dentro de .coluna), com risco amarelo embaixo. */
+.coluna h2 {
+  margin-bottom: 8px;
+  /* espaço abaixo do título, antes dos itens */
+  padding-bottom: 4px;
+  /* respiro interno embaixo, afastando o texto da linha */
+  border-bottom: 2px solid #ffbf00;
+  /* linha embaixo: largura 2px, estilo sólido, cor amarela (decoração) */
+}
+
+/* item: nome de um lado, preço do outro (flex básico da S07) */
+/* ITEM — uma linha do cardápio: nome à esquerda, preço à direita. */
+.item {
+  display: flex;
+  /* põe nome e preço lado a lado, em linha */
+  justify-content: space-between;
+  /* empurra os filhos p/ as pontas: nome na esquerda, preço na direita */
+  padding: 8px 0;
+  /* "8px 0" = 8px em cima/baixo e 0 nas laterais (respiro vertical de cada item) */
+  border-bottom: 1px solid #e4e4e7;
+  /* linha fina cinza separando um item do próximo */
+}
+
+/* DESKTOP (a partir de 768px): as colunas ficam lado a lado */
+/* "@media" aplica as regras de dentro SÓ quando a condição é verdadeira.
+   "min-width: 768px" = a partir de 768px, ou seja, em telas LARGAS.
+   "em" é unidade relativa ao tamanho da fonte — boa prática em media queries. */
+@media (min-width: 768px) {
+  .cardapio {
+    flex-direction: row;
+    /* no desktop, troca p/ LINHA: as colunas passam a ficar lado a lado */
+  }
+
+  .coluna {
+    flex: 1;
+    /* cada coluna ocupa uma fração igual do espaço (as duas com a mesma largura) */
+  }
+}
