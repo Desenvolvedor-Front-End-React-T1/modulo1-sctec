@@ -47,7 +47,7 @@ function renderizarLista() {
     botao.textContent = "Remover";
     botao.setAttribute("aria-label", "Remover " + cidade.nome); // nome acessível
     botao.addEventListener("click", () => {
-      // removerCidade(cidade.nome);
+      removerCidade(cidade.nome);
       console.log("Removendo cidade:", cidade.nome);
     });
 
@@ -55,6 +55,17 @@ function renderizarLista() {
     item.appendChild(botao);
     listaCidades.appendChild(item);
   });
+}
+
+function removerCidade(nomeCidade) {
+  const cidades = carregarCidades();
+  const novaLista = cidades.filter((c) => {
+    return c.nome !== nomeCidade;
+  });
+
+  salvarCidades(novaLista);
+
+  console.log(renderizarLista());
 }
 
 renderizarLista();

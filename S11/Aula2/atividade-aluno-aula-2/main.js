@@ -16,6 +16,10 @@ const status = document.getElementById("status");
 // JSON.parse(texto) || []  (o "|| []" cobre a 1ª visita, quando ainda não há nada).
 function carregarItens() {
   // escreva aqui
+  const texto = localStorage.getItem(chaveItens);
+  const feira = JSON.parse(texto) || [];
+
+  return feira;
 }
 
 // TODO 2 — SALVAR os itens.
