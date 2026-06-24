@@ -113,29 +113,7 @@
       <!-- COLEÇÃO: lista de cidades monitoradas. ul/li com nome + botão remover acessível -->
       <section id="cidades" aria-labelledby="titulo-cidades">
         <h2 id="titulo-cidades">Cidades monitoradas</h2>
-        <ul id="lista-cidades" class="lista-cidades">
-          <li class="cidade-item">
-            <span class="cidade-nome">Florianópolis</span>
-            <!-- aria-label dá ao botão um nome completo p/ o leitor de tela (o "X" sozinho não diz nada) -->
-            <button
-              type="button"
-              class="btn-remover"
-              aria-label="Remover Florianópolis"
-            >
-              Remover
-            </button>
-          </li>
-          <li class="cidade-item">
-            <span class="cidade-nome">São Paulo</span>
-            <button
-              type="button"
-              class="btn-remover"
-              aria-label="Remover São Paulo"
-            >
-              Remover
-            </button>
-          </li>
-        </ul>
+        <ul id="lista-cidades" class="lista-cidades"></ul>
         <button type="button" id="btn-limpar-tudo">Limpar tudo</button>
       </section>
 
@@ -154,5 +132,7 @@
         <p>PrevisaoCerta · AgroLog Logística © 2026</p>
       </div>
     </footer>
+
+    <script src="./assets/scripts/main.js"></script>
   </body>
 </html>
