@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Conecta RH — Painel de equipe</title>
+  <meta name="description" content="Mural da equipe com foto e contato, alimentado pela Random User, para a Conecta RH." />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body>
+  <main class="container">
+    <h1>Painel de equipe</h1>
+    <p class="legenda">Carregue os perfis da equipe e copie o contato com um clique.</p>
+
+    <button type="button" id="btn-carregar">Carregar equipe</button>
+
+    <!-- REGIÃO VIVA: anuncia carregando/erro ao leitor de tela -->
+    <p id="status" aria-live="polite" role="status"></p>
+
+    <!-- lista preenchida pelo JS via createElement (nunca innerHTML com dado externo) -->
+    <ul id="lista-equipe" class="lista-equipe"></ul>
+  </main>
+
+  <script src="./main.js" defer></script>
+</body>
+
+</html>

@@ -1,0 +1,117 @@
+/* Reserva A3 · Atividade C — Conecta RH (Random User).
+   Tema claro-operacional. Grade de cards que reflui (Flexbox, herança da S10). Comentado prop a prop. */
+
+* {
+  margin: 0;                /* zera a margem padrão do navegador */
+  padding: 0;               /* zera o padding padrão */
+  box-sizing: border-box;   /* width/height já incluem padding e borda */
+  font-family: 'Segoe UI', system-ui, sans-serif; /* fonte do sistema, sem CDN */
+}
+
+body {
+  background-color: #f4f6f8; /* cinza muito claro = painel limpo */
+  color: #1d2733;            /* texto escuro com bom CONTRASTE (a11y) */
+  line-height: 1.5;          /* respiro entre linhas */
+  padding: 24px;             /* afasta o conteúdo das bordas */
+}
+
+/* .container: centraliza e limita a largura */
+.container {
+  max-width: 880px;   /* cabem 2–3 cards por linha */
+  margin: 0 auto;     /* auto nas laterais = centraliza */
+}
+
+h1 {
+  font-size: 1.5rem;     /* título proporcional */
+  margin-bottom: 4px;    /* aproxima da legenda */
+}
+
+.legenda {
+  color: #555;           /* cinza secundário */
+  margin-bottom: 16px;   /* espaço antes do botão */
+}
+
+button {
+  padding: 10px 16px;        /* área de toque confortável */
+  border: none;              /* sem borda padrão */
+  border-radius: 8px;        /* cantos suaves */
+  background-color: #0b67c2; /* azul de ação */
+  color: #fff;               /* texto branco com contraste */
+  font-size: 1rem;           /* legível */
+  font-weight: 600;          /* destaque */
+  cursor: pointer;           /* mãozinha = clicável */
+}
+
+button:hover {
+  background-color: #095699; /* escurece um tom no hover */
+}
+
+/* FOCO VISÍVEL — a11y: nunca remover, reforçar */
+button:focus-visible {
+  outline: 3px solid #ffb300; /* contorno bem visível ao tabular */
+  outline-offset: 2px;        /* afasta da borda */
+}
+
+/* #status: região viva. Altura mínima evita o layout "pular" */
+#status {
+  min-height: 1.5em;   /* reserva espaço mesmo vazio */
+  margin: 12px 0;      /* respiro acima e abaixo */
+  font-weight: 600;    /* mensagem com peso */
+}
+
+/* modificadores de estado (mesmos da PrevisaoCerta) */
+.status--carregando { color: #555; }      /* neutro */
+.status--erro { color: #b00020; }         /* vermelho com contraste AA */
+.status--sucesso { color: #1b7a3d; }      /* verde de confirmação */
+
+/* grade de cards que reflui sem media query (flex-wrap + flex-basis) */
+.lista-equipe {
+  list-style: none;     /* tira os marcadores da ul */
+  display: flex;        /* layout flexível */
+  flex-wrap: wrap;      /* os cards quebram de linha sozinhos */
+  gap: 16px;            /* respiro uniforme entre cards */
+}
+
+.membro-card {
+  flex: 1 1 240px;          /* base 240px: cabem quantos couberem por linha */
+  display: flex;           /* foto + dados lado a lado (flex aninhado) */
+  align-items: center;     /* alinha verticalmente foto e texto */
+  gap: 12px;               /* espaço entre a foto e os dados */
+  background-color: #fff;  /* cartão branco sobre o fundo cinza */
+  padding: 16px;           /* respiro interno */
+  border-radius: 8px;      /* cantos suaves */
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1); /* leve elevação */
+}
+
+.membro-foto {
+  width: 56px;            /* tamanho fixo da miniatura */
+  height: 56px;           /* quadrado */
+  border-radius: 50%;     /* deixa a foto redonda */
+  object-fit: cover;      /* preenche o círculo sem distorcer */
+  flex-shrink: 0;         /* a foto não encolhe quando o nome é longo */
+}
+
+.membro-dados {
+  display: flex;            /* nome, e-mail e botão empilhados */
+  flex-direction: column;   /* um embaixo do outro */
+  gap: 2px;                 /* respiro mínimo entre as linhas */
+  min-width: 0;             /* permite o e-mail longo quebrar/encurtar */
+}
+
+.membro-nome {
+  font-weight: 600;   /* destaca o nome */
+}
+
+.membro-email {
+  color: #555;            /* cinza secundário */
+  font-size: 0.9rem;      /* menor que o nome */
+  word-break: break-all;  /* e-mail longo não estoura o card */
+}
+
+.btn-copiar {
+  margin-top: 6px;           /* afasta do e-mail */
+  align-self: flex-start;    /* não estica na largura do card */
+  padding: 6px 10px;         /* botão pequeno */
+  font-size: 0.85rem;        /* texto menor */
+  background-color: #0b67c2; /* mesma família de ação */
+}

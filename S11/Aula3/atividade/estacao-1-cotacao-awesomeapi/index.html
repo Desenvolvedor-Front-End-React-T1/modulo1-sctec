@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AgroCâmbio — Cotação do dólar</title>
+  <meta name="description" content="Cotação do dólar do dia em tempo real via AwesomeAPI para a AgroCâmbio." />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body>
+  <main class="container">
+    <h1>Cotação do dólar</h1>
+    <p class="legenda">Valor do dia para fechamento de contratos de exportação.</p>
+
+    <!-- card do valor: article = conteúdo autônomo (herança da A1) -->
+    <article id="card-cotacao" class="card-cotacao">
+      <p class="moeda" id="nome-moeda">Dólar Americano/Real Brasileiro</p>
+      <!-- valor preenchido pelo JS; começa com um traço enquanto não carrega -->
+      <p class="valor" id="valor-dolar">—</p>
+    </article>
+
+    <!-- REGIÃO VIVA: anuncia carregando/erro ao leitor de tela -->
+    <p id="status" aria-live="polite" role="status"></p>
+
+    <button type="button" id="btn-atualizar">Atualizar cotação</button>
+  </main>
+
+  <script src="./main.js" defer></script>
+</body>
+
+</html>

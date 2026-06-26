@@ -26,7 +26,7 @@ function carregarItens() {
 // Dica: localStorage.setItem(chaveItens, JSON.stringify(itens))
 // (sem o JSON.stringify o array vira "[object Object]" — lixo).
 function salvarItens(itens) {
-  // escreva aqui
+  localStorage.setItem(chaveItens, JSON.stringify(itens));
 }
 
 // (PRONTO) DESENHAR a lista na tela a partir do array salvo.
@@ -49,8 +49,27 @@ function renderizarLista() {
 // TODO 3 — LIGAR o formulário: ao enviar, adicionar o item e salvar.
 // Roteiro: preventDefault → ler inputItem.value.trim() → se vazio, sair →
 //          carregar o array, dar push({ nome }) → salvar → renderizar → limpar o input.
-formItem.addEventListener("submit", function (evento) {
-  // escreva aqui
+formItem.addEventListener("submit", (evento) => {
+  evento.preventDefault();
+
+  const nome = inputItem.value.trim();
+
+  if (!nome || nome === "") return;
+
+  const itens = carregarItens();
+
+  itens.push({ nome });
+
+  salvarItens(itens);
+  renderizarLista();
+  inputItem.value = "";
+});
+
+btnLimpar.addEventListener("click", () => {
+  localStorage.removeItem(chaveItens);
+
+  renderizarLista();
+  //window.location.reload();
 });
 
 // (PRONTO) primeira pintura ao abrir a página (desenha o que já estava salvo)

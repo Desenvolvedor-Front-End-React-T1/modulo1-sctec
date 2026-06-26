@@ -1,0 +1,84 @@
+/* Reserva A3 · Atividade A — TransLog SC (ViaCEP).
+   Tema claro-operacional (mesmo da PrevisaoCerta). Comentado propriedade a propriedade. */
+
+* {
+  margin: 0;                /* zera a margem padrão do navegador */
+  padding: 0;               /* zera o padding padrão */
+  box-sizing: border-box;   /* width/height já incluem padding e borda */
+  font-family: 'Segoe UI', system-ui, sans-serif; /* fonte do sistema, sem CDN */
+}
+
+body {
+  background-color: #f4f6f8; /* cinza muito claro = painel limpo */
+  color: #1d2733;            /* texto escuro com bom CONTRASTE (a11y) */
+  line-height: 1.5;          /* respiro entre linhas */
+  padding: 24px;             /* afasta o conteúdo das bordas da tela */
+}
+
+/* .container: centraliza e limita a largura (padrão da semana) */
+.container {
+  max-width: 520px;   /* form estreito, foco na leitura */
+  margin: 0 auto;     /* auto nas laterais = centraliza */
+}
+
+h1 {
+  font-size: 1.5rem;     /* título proporcional ao painel */
+  margin-bottom: 4px;    /* aproxima da legenda logo abaixo */
+}
+
+.legenda {
+  color: #555;           /* cinza secundário, menos peso que o h1 */
+  margin-bottom: 20px;   /* espaço antes do formulário */
+}
+
+/* form em coluna: cada campo numa linha */
+.form-endereco {
+  display: flex;            /* layout flexível */
+  flex-direction: column;   /* empilha os campos verticalmente */
+  gap: 14px;                /* respiro uniforme entre campos */
+  background-color: #fff;   /* cartão branco sobre o fundo cinza */
+  padding: 24px;            /* respiro interno do cartão */
+  border-radius: 8px;       /* cantos suaves */
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1); /* leve elevação */
+}
+
+/* cada campo = label em cima, input embaixo */
+.campo {
+  display: flex;            /* container flex */
+  flex-direction: column;   /* label acima do input */
+  gap: 4px;                 /* aproxima rótulo do campo */
+}
+
+label {
+  font-weight: 600;   /* destaca o rótulo do valor */
+  font-size: 0.9rem;  /* um pouco menor que o texto base */
+}
+
+input {
+  padding: 10px 12px;        /* área de toque confortável */
+  border: 1px solid #c4cdd5; /* borda neutra */
+  border-radius: 6px;        /* cantos suaves */
+  font-size: 1rem;           /* legível em qualquer tela */
+}
+
+/* FOCO VISÍVEL — a11y: nunca remover o outline, reforçar (herança da A1) */
+input:focus-visible {
+  outline: 3px solid #ffb300; /* contorno bem visível ao tabular */
+  outline-offset: 2px;        /* afasta o contorno da borda */
+}
+
+/* campos travados após preencher (usados no desafio-estrela) ficam acinzentados */
+input[readonly] {
+  background-color: #eef1f4; /* sinaliza "preenchido automaticamente" */
+}
+
+/* #status: região viva. Altura mínima evita o layout "pular" quando a msg aparece */
+#status {
+  min-height: 1.5em;  /* reserva espaço mesmo vazio */
+  font-weight: 600;   /* mensagem com peso */
+}
+
+/* modificadores de estado (BEM-light, mesmos da PrevisaoCerta) */
+.status--carregando { color: #555; }                    /* neutro */
+.status--erro { color: #b00020; }                       /* vermelho com contraste AA */
+.status--sucesso { color: #1b7a3d; }                    /* verde de confirmação */

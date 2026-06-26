@@ -1,0 +1,89 @@
+/* Reserva A3 · Atividade B — AgroCâmbio (AwesomeAPI).
+   Tema escuro-financeiro. Comentado propriedade a propriedade. */
+
+* {
+  margin: 0;                /* zera a margem padrão do navegador */
+  padding: 0;               /* zera o padding padrão */
+  box-sizing: border-box;   /* width/height já incluem padding e borda */
+  font-family: 'Segoe UI', system-ui, sans-serif; /* fonte do sistema, sem CDN */
+}
+
+body {
+  background-color: #0e1320; /* fundo escuro = painel financeiro */
+  color: #e7ecf3;            /* texto claro com bom CONTRASTE sobre o escuro (a11y) */
+  line-height: 1.5;          /* respiro entre linhas */
+  padding: 24px;             /* afasta o conteúdo das bordas */
+  min-height: 100vh;         /* ocupa a tela inteira (fundo escuro completo) */
+}
+
+/* .container: centraliza e limita a largura */
+.container {
+  max-width: 440px;   /* card estreito, foco no número */
+  margin: 0 auto;     /* auto nas laterais = centraliza */
+}
+
+h1 {
+  font-size: 1.5rem;     /* título proporcional */
+  margin-bottom: 4px;    /* aproxima da legenda */
+}
+
+.legenda {
+  color: #97a3b6;        /* cinza-azulado secundário */
+  margin-bottom: 20px;   /* espaço antes do card */
+}
+
+/* card do valor: cartão destacado sobre o fundo escuro */
+.card-cotacao {
+  background-color: #182135; /* azul-petróleo um tom acima do fundo */
+  padding: 28px;             /* respiro interno generoso */
+  border-radius: 10px;       /* cantos suaves */
+  text-align: center;        /* centraliza moeda e valor */
+}
+
+.moeda {
+  color: #97a3b6;        /* rótulo discreto */
+  font-size: 0.95rem;    /* menor que o valor */
+  margin-bottom: 8px;    /* afasta do número */
+}
+
+.valor {
+  font-size: 2.4rem;     /* o número é o protagonista */
+  font-weight: 700;      /* peso máximo, leitura imediata */
+  color: #4ade80;        /* verde de mercado (contraste alto no escuro) */
+}
+
+/* #status: região viva. Altura mínima evita o layout "pular" */
+#status {
+  min-height: 1.5em;     /* reserva espaço mesmo vazio */
+  margin: 12px 0;        /* respiro acima e abaixo */
+  text-align: center;    /* alinhado ao card */
+  font-weight: 600;      /* mensagem com peso */
+}
+
+/* modificadores de estado (mesmos da PrevisaoCerta) */
+.status--carregando { color: #97a3b6; }   /* neutro */
+.status--erro { color: #ff6b6b; }         /* vermelho com contraste no escuro */
+.status--sucesso { color: #4ade80; }      /* verde de confirmação */
+
+button {
+  display: block;            /* ocupa a linha */
+  width: 100%;               /* largura total do container */
+  padding: 12px;             /* área de toque confortável */
+  border: none;              /* sem borda padrão */
+  border-radius: 8px;        /* cantos suaves */
+  background-color: #2563eb; /* azul de ação */
+  color: #fff;               /* texto branco com contraste */
+  font-size: 1rem;           /* legível */
+  font-weight: 600;          /* destaque */
+  cursor: pointer;           /* mãozinha = clicável */
+}
+
+button:hover {
+  background-color: #1d4ed8; /* escurece um tom ao passar o mouse */
+}
+
+/* FOCO VISÍVEL — a11y: nunca remover, reforçar */
+button:focus-visible {
+  outline: 3px solid #ffb300; /* contorno bem visível ao tabular */
+  outline-offset: 2px;        /* afasta da borda */
+}
