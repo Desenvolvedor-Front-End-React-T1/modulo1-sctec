@@ -6,6 +6,10 @@ const inputCidade = document.getElementById("input-cidade");
 
 const formBusca = document.getElementById("form-busca");
 const status = document.getElementById("status");
+const seletorUnidade = document.getElementById("seletor-unidade");
+
+// guarda o último clima buscado, para redesenhar o card ao trocar °C/°F
+let ultimoResultado = null;
 
 function mostrarStatus(mensagem, tipo) {
   status.textContent = mensagem;
@@ -36,6 +40,7 @@ formBusca.addEventListener("submit", (evento) => {
   if (!nome || nome === "") return;
 
   adicionarCidade(nome);
+  buscaClima(nome);
   inputCidade.value = "";
 });
 
@@ -106,7 +111,7 @@ function removerCidade(nomeCidade) {
 renderizarLista();
 //(-27.59311613190986, -48.57195364498678);
 
-async function buscaClima() {
+async function buscaClima(nome) {
   const lat = "-27.59";
   const lon = "-48.57";
 
@@ -128,12 +133,14 @@ async function buscaClima() {
     const tempo = decodificarTempo(atual.weather_code);
 
     const resultado = {
+      nome: nome,
       temperaturaC: atual.temperature_2m,
       descricao: tempo.texto,
       icone: tempo.icone,
       momento: atual.time,
     };
 
+    ultimoResultado = resultado; // memoriza para o toggle °C/°F redesenhar
     renderizarCard(resultado);
     mostrarStatus("", "sucesso");
 
@@ -165,10 +172,43 @@ function decodificarTempo(code) {
   return mapa[code] || { texto: "Condição desconhecida", icone: "❓" };
 }
 
+// ===== Bloco 0.5: preferência de unidade (°C/°F) no localStorage =====
+function carregarUnidade() {
+  // se nunca escolheu, assume Celsius
+  return localStorage.getItem(chaveUnidade) || "celsius";
+}
+
+function salvarUnidade(unidade) {
+  localStorage.setItem(chaveUnidade, unidade);
+}
+
+function formatarTemperatura(celsius, unidade) {
+  if (unidade === "fahrenheit") {
+    const fahrenheit = (celsius * 9) / 5 + 32;
+    return fahrenheit.toFixed(1) + " °F";
+  }
+  return celsius.toFixed(1) + " °C";
+}
+
+// marca o radio certo ao abrir a página (reflete o que está salvo)
+function restaurarUnidadeSelecionada() {
+  const unidade = carregarUnidade();
+  const radio = document.getElementById("unidade-" + unidade);
+  if (radio) radio.checked = true;
+}
+
+// trocar o radio: salva a preferência e redesenha o card (se já houver dado)
+seletorUnidade.addEventListener("change", (evento) => {
+  salvarUnidade(evento.target.value);
+  if (ultimoResultado) renderizarCard(ultimoResultado);
+});
+
+restaurarUnidadeSelecionada();
+
 function renderizarCard(dado) {
   const card = document.getElementById("card-clima");
 
-  // const unidade = carregarUnidade(); // lê a preferência °C/°F (do Bloco 0.5)
+  const unidade = carregarUnidade(); // lê a preferência °C/°F (do Bloco 0.5)
 
   card.querySelector(".card-cidade").textContent = dado.nome || "Clima atual";
 
