@@ -1,6 +1,38 @@
-const prompt = require("prompt-sync")();
-const chalk = require("chalk");
+// const prompt = require("prompt-sync")();
+// const chalk = require("chalk");
 
-const resposta = prompt("Qual o seu nome? ");
+import promptSync from "prompt-sync";
+import chalk from "chalk";
 
-console.log(chalk.bold.blue("TESTE"));
+import perguntas from "./perguntas.js";
+import verificarAcertos from "./placar.js";
+
+const prompt = promptSync();
+
+// const resposta = prompt("Qual o seu nome? ");
+
+// const resposta = prompt("Nome: ");
+
+// console.log(chalk.bold.blue(resposta));
+
+let acertos = 0;
+
+for (let i = 0; i < perguntas.length; i++) {
+  const questao = perguntas[i];
+
+  console.log(chalk.bold.blue("\n" + questao.pergunta));
+  console.log(chalk.bold.hex("#FFA500")(questao.alternativas.join("    ")));
+
+  const resposta = prompt("Qual a sua resposta (número)?");
+
+  if (Number(resposta) === questao.correta) {
+    console.log(chalk.bold.green("Acertou!"));
+    acertos++;
+  } else {
+    console.log(chalk.bold.red("Errou! " + chalk.bold.blue("Teste")));
+  }
+
+  // console.log(questao);
+}
+
+verificarAcertos(acertos);
